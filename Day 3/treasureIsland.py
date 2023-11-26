@@ -24,7 +24,7 @@ print("Welcome to Treasure Island.")
 print("Your mission is to find the treasure.")
 
 answer = input("Do you want to move left or right? [left/right]\n")
-if answer.lower() != "left":
+if answer.lower() != "left ":
   print("You got lost in the woods. Game over.")
   exit()
 answer = input("You found a river. Do you want to swim across or wait for a boat? [swim/wait]\n")
