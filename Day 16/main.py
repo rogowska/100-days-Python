@@ -18,11 +18,9 @@ class CoffeeMachine():
             elif choice == "report":
                 self.coffee_maker.report()
                 self.money_machine.report() 
-            elif choice == "espresso" or choice == "latte" or choice == "cappuccino":
+            else:
                 drink = self.menu.find_drink(choice)
-                is_sufficient = CoffeeMaker.is_resource_sufficient(self.coffee_maker, drink)
-                if is_sufficient:
-                    if self.money_machine.make_payment(drink.cost):
+                if self.coffee_maker.is_resource_sufficient(drink) and self.money_machine.make_payment(drink.cost):
                         self.coffee_maker.make_coffee(drink)
 
 machine = CoffeeMachine()
