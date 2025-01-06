@@ -5,6 +5,7 @@ UP = 90
 LEFT = 180
 DOWN = 270
 SPEED = 20
+STARTING_POSITIONS = [(0,0), (-20, 0), (-40, 0)]
 
 class Snake:
 
@@ -15,15 +16,20 @@ class Snake:
 
     def create_snake(self):
         '''Create starter snake made of three elements'''
-        for pos in range(3):
-            new_snake_element = Turtle(shape="square")
-            new_snake_element.color("white")
-            new_snake_element.up()
-            new_snake_element.setx(0 - pos*SPEED)
-            self.snake_elements.append(new_snake_element)
+        for position in STARTING_POSITIONS:
+            self.add_element(position)
         
+    def add_element(self, position):
+        '''Add element to the snake'''
+        new_snake_element = Turtle(shape="square")
+        new_snake_element.color("white")
+        new_snake_element.up()
+        new_snake_element.goto(position)
+        self.snake_elements.append(new_snake_element)
+
     def grow(self):
-        pass
+        '''Add element to the snake after eating food'''
+        self.add_element(self.snake_elements[-1].position())
 
     def move(self):
         '''Move the snake by one unit'''

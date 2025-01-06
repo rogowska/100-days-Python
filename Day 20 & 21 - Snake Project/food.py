@@ -13,7 +13,7 @@ class Food(Turtle):
     
     def spawn(self):
         '''Spawn food in the random place on screen'''
-        random_x = random.randrange(-int(WIDTH/2 - 5), int(WIDTH/2 - 5))
-        random_y = random.randrange(-int(HEIGHT/2 - 5), int(HEIGHT/2 - 5))
+        random_x = random.randrange(-int(WIDTH/2 - 15), int(WIDTH/2 - 15))
+        random_y = random.randrange(-int(HEIGHT/2 - 15), int(HEIGHT/2 - 15))
         self.teleport(random_x, random_y)
         
