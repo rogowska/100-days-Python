@@ -14,30 +14,45 @@ class Snake:
         self.head = self.snake_elements[0]
 
     def create_snake(self):
-            for pos in range(3):
-                new_snake_element = Turtle(shape="square")
-                new_snake_element.color("white")
-                new_snake_element.up()
-                new_snake_element.setx(0 - pos*SPEED)
-                self.snake_elements.append(new_snake_element)
+        '''Create starter snake made of three elements'''
+        for pos in range(3):
+            new_snake_element = Turtle(shape="square")
+            new_snake_element.color("white")
+            new_snake_element.up()
+            new_snake_element.setx(0 - pos*SPEED)
+            self.snake_elements.append(new_snake_element)
         
+    def grow(self):
+        pass
+
     def move(self):
+        '''Move the snake by one unit'''
         for idx in range(len(self.snake_elements)-1, 0, -1):
-            self.snake_elements[idx].goto(self.snake_elements[idx-1].xcor(), self.snake_elements[idx-1].ycor())
+            new_x = self.snake_elements[idx-1].xcor()
+            new_y = self.snake_elements[idx-1].ycor()
+            self.snake_elements[idx].goto(new_x, new_y)
         self.head.forward(SPEED)
 
-    def left(self):
+    def return_head(self):
+        '''Return head element of snake'''
+        return self.head
+
+    def turn_left(self):
+        '''Turn the snake left'''
         if self.head.heading() != RIGHT:
             self.head.setheading(LEFT)
     
-    def right(self):
+    def turn_right(self):
+        '''Turn the snake right'''
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
 
-    def up(self):
+    def go_up(self):
+        '''Turn the snake to go up'''
         if self.head.heading() != DOWN:
             self.head.setheading(UP)
 
-    def down(self):
+    def go_down(self):
+        '''Turn the snake to go down'''
         if self.head.heading() != UP:
             self.head.setheading(DOWN)
